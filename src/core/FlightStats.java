@@ -16,6 +16,7 @@ import pojo.FlightStatus;
 import pojo.FlightStatusTrack;
 import pojo.arrays.Airlines;
 import pojo.arrays.Airports;
+import pojo.arrays.FIDS;
 
 public class FlightStats {
 
@@ -104,7 +105,13 @@ public class FlightStats {
 		return airlines;
 	}
 	
-	
+	public FIDS getFIDS(FidsParameters params) {
+		FIDS fids;
+		
+		
+		
+		return fids;
+	}
 	
 	
 	
