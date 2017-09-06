@@ -3,6 +3,8 @@ package pojo;
 import java.io.Serializable;
 
 import pojo.arrays.CodeShares;
+import pojo.arrays.FlightStatusUpdates;
+import pojo.arrays.IrregularOperations;
 
 public class FlightStatus implements Serializable{
 
@@ -31,6 +33,18 @@ public class FlightStatus implements Serializable{
 	private FlightDuration flightDurations;
 	private AirportResource airportResources;
 	private FlightEquipment flightEquipment;
+	private FlightStatusUpdates flightStatusUpdates;
+	private IrregularOperations irregularOperations;
+	private Airline operatingCarrier;
+	private String operatingCarrierFsCode;
+	private Airline primaryCarrier;
+	private String primaryCarrierFsCode;
+	private ConfirmedIncident confirmedIncident;
+	
+	
+	
+	
+	
 	
 	
 	

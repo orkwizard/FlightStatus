@@ -6,19 +6,25 @@ import pojo.Downline;
 
 public class Downlines {
 
-	private ArrayList<Downline> downline;
+	private ArrayList<Downline> downlines;
 	
 	public Downlines() {
 		super();
 	}
 
 	public ArrayList<Downline> getDownline() {
-		return downline;
+		return downlines;
 	}
 
 	public void setDownline(ArrayList<Downline> downline) {
-		this.downline = downline;
+		this.downlines = downline;
 	}
+
+	@Override
+	public String toString() {
+		return "Downlines [downlines=" + downlines + "]";
+	}
+	
 	
 	
 }
