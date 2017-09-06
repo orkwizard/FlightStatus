@@ -12,6 +12,9 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 
+import pojo.arrays.Airlines;
+import pojo.arrays.Airports;
+
 public class FlightStats {
 
 	private static String appId = "95f48407";

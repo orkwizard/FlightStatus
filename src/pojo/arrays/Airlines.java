@@ -1,4 +1,4 @@
-package core;
+package pojo.arrays;
 
 import java.io.Serializable;
 import java.util.ArrayList;

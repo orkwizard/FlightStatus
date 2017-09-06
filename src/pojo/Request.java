@@ -1,17 +1,32 @@
 package pojo;
 
-import core.Airlines;
-import core.Airports;
-import core.Equipments;
+import pojo.arrays.Airlines;
+import pojo.arrays.Airports;
+import pojo.arrays.Equipments;
+import request.Apendix;
+import request.RQ;
+
+import request.RQDate;
+import request.RQHourDay;
+import request.RQIN;
+import request.RQNumHours;
+import request.RQUTC;
 
 public class Request {
-	RQAirport airport;
+	RQ airport;
+	RQ carrier;
 	RQDate date;
-	RQHourDay hourOfDay;
-	RQNumHours numHours;
-	RQUTC utc;
-	Airlines apendix;
-	Airports airports;
+	
+	RQIN hourOfDay; //RQ = Request IN = Interpred
+	RQIN numHours;
+	RQIN utc;
+	
+	String codeType;
+	
+	RQIN maxFlights;
+	String extendedOptions;
+	String url;
+	Apendix apendix;
 	Equipments equipments;
 	
 	

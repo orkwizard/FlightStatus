@@ -1,4 +1,4 @@
-package core;
+package pojo.arrays;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,6 @@ import pojo.Equipment;
 public class Equipments {
 
 	ArrayList<Equipment> equipments;
-
-	
 
 	public Equipments() {
 		super();
