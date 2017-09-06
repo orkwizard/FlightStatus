@@ -12,6 +12,8 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 
+import pojo.FlightStatus;
+import pojo.FlightStatusTrack;
 import pojo.arrays.Airlines;
 import pojo.arrays.Airports;
 
@@ -61,12 +63,14 @@ public class FlightStats {
 	private String addCredentials(String endpoint) {
 		return endpoint+"?appId="+appId+"&appKey="+appKey;
 	}
+	
+	//Aeropuertos
 	public Airports getAirports() throws Exception {
 		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/active";
 		String uri = addCredentials(endpoint);
 		Airports airports= new Airports();
 		String response = get(uri);
-		System.out.println("Data :---" + response);
+		//System.out.println("Data :---" + response);
 		airports = gson.fromJson(response,Airports.class);
 		return airports;
 	}
@@ -75,7 +79,8 @@ public class FlightStats {
 		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/countryCode/"+countrycode;
 		String uri = addCredentials(endpoint);
 		String response = get(uri);
-		System.out.println("Data :---" + response);
+		airports = gson.fromJson(response,Airports.class);
+		//System.out.println("Data :--->>>" + response);
 		return airports;
 	}
 	public Airports getAirportsByCityCode(String citycode) throws Exception{
@@ -87,6 +92,9 @@ public class FlightStats {
 		airports = gson.fromJson(response,Airports.class);		
 		return airports;
 	}
+	
+	//Aerolineas
+
 	public Airlines getAirlines() throws Exception{
 		String endpoint = "https://api.flightstats.com/flex/airlines/rest/v1/json/active";
 		String uri = addCredentials(endpoint);
@@ -102,6 +110,32 @@ public class FlightStats {
 	
 	
 	
+	//Estatus
+	public FlightStatusTrack getFlightStatusArrivals(String airport,int year,int month,int day,int hourOfDay,boolean utc, int numHours,String carrier,String codeType,int maxFlights,String extendedOptions) throws Exception {
+		StringBuilder endpoint = new StringBuilder();
+		//"https://api.flightstats.com/flex/flightstatus/rest/v2/json/airport/status/CUN/arr/2017/9/6/11?appId=95f48407&appKey=819b4d571c001301b03b8ee6855b1780&utc=false&numHours=1&maxFlights=5"
+		endpoint.append("https://api.flightstats.com/flex/flightstatus/rest/v2/json/airport/status/");
+		endpoint.append(airport+"/arr/");
+		endpoint.append(year+"/");
+		endpoint.append(month+"/");
+		endpoint.append(day+"/");
+		endpoint.append(hourOfDay+"/");
+		endpoint.append("?appId="+appId+"&appKey="+appKey);
+		endpoint.append("&utc="+utc);
+		endpoint.append("&numHours="+ numHours);
+		if(maxFlights>0)
+			endpoint.append("&maxFlights=" + maxFlights);
+		System.out.println(endpoint.toString());
+		String response = get (endpoint.toString());
+	
+		FlightStatusTrack flightstatus = gson.fromJson(response,FlightStatusTrack.class);
+		
+		return flightstatus;
+	}
+	
+	
+	
+	
 	
 	public final static void main(String[] args) {
 		
@@ -111,7 +145,14 @@ public class FlightStats {
 			//fs.getAirports();
 			//fs.getAirportsByCityCode("CUN");
 			
-			fs.getAirportsByCountryCode("MX");
+			Airlines airlines = fs.getAirlines();
+			//Airports airports =  fs.getAirportsByCountryCode("MX");
+			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
+			
+			System.out.println(airlines.toString());
+			//System.out.println(airports.toString());
+			//System.err.println(fst.toString());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

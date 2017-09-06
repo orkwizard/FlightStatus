@@ -2,9 +2,9 @@ package pojo;
 
 public class AirportResource {
 
-	private int departureTerminal;
+	private String departureTerminal;
 	private String departureGate;
-	private int arrivalTerminal;
+	private String arrivalTerminal;
 	private String arrivalGate;
 	private String baggage;
 	
@@ -13,24 +13,37 @@ public class AirportResource {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getDepartureTerminal() {
-		return departureTerminal;
-	}
-	public void setDepartureTerminal(int departureTerminal) {
-		this.departureTerminal = departureTerminal;
-	}
+	
 	public String getDepartureGate() {
 		return departureGate;
 	}
 	public void setDepartureGate(String departureGate) {
 		this.departureGate = departureGate;
 	}
-	public int getArrivalTerminal() {
+	
+	
+	
+	
+	public String getDepartureTerminal() {
+		return departureTerminal;
+	}
+
+
+	public void setDepartureTerminal(String departureTerminal) {
+		this.departureTerminal = departureTerminal;
+	}
+
+
+	public String getArrivalTerminal() {
 		return arrivalTerminal;
 	}
-	public void setArrivalTerminal(int arrivalTerminal) {
+
+
+	public void setArrivalTerminal(String arrivalTerminal) {
 		this.arrivalTerminal = arrivalTerminal;
 	}
+
+
 	public String getArrivalGate() {
 		return arrivalGate;
 	}

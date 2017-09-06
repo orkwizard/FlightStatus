@@ -3,7 +3,7 @@ package request;
 public class RQIN {
 	
 	private String requested;
-	private String interpred;
+	private String interpreted;
 	
 	
 	public RQIN() {
@@ -17,14 +17,14 @@ public class RQIN {
 		this.requested = requested;
 	}
 	public String getInterpred() {
-		return interpred;
+		return interpreted;
 	}
 	public void setInterpred(String interpred) {
-		this.interpred = interpred;
+		this.interpreted = interpred;
 	}
 	@Override
 	public String toString() {
-		return "RQIN [requested=" + requested + ", interpred=" + interpred + "]";
+		return "RQIN [requested=" + requested + ", interpred=" + interpreted + "]";
 	}
 	
 	

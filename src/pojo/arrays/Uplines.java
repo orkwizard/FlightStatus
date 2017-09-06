@@ -6,7 +6,7 @@ import pojo.Upline;
 
 public class Uplines {
 
-	ArrayList<Upline> upline;
+	ArrayList<Upline> uplines;
 
 	
 	public Uplines() {
@@ -14,16 +14,16 @@ public class Uplines {
 	}
 
 	public ArrayList<Upline> getUpline() {
-		return upline;
+		return uplines;
 	}
 
-	public void setUpline(ArrayList<Upline> upline) {
-		this.upline = upline;
+	public void setUpline(ArrayList<Upline> uplines) {
+		this.uplines = uplines;
 	}
 
 	@Override
 	public String toString() {
-		return "Uplines [upline=" + upline + "]";
+		return "Uplines [upline=" + uplines + "]";
 	}
 	
 	

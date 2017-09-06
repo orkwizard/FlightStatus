@@ -9,13 +9,13 @@ public class Airline implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String fs;
-	private String iata;
-	private String icao;
-	private String name;
-	private String phoneNumber;
+	private String fs="";
+	private String iata="";
+	private String icao="";
+	private String name="";
+	private String phoneNumber="";
 	private boolean active;
-	private String category;
+	private String category="";
 	
 	
 	
