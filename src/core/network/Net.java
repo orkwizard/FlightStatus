@@ -19,6 +19,9 @@ public class Net {
 		super();
 	}
 	
+	
+	
+	
 	public static String get(String endpoint) throws Exception {
 		String uri = endpoint;
 		String responseBody;

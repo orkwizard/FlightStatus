@@ -29,12 +29,14 @@ public class FlightStats {
 	private static String appId = "95f48407";
 	private static String appKey = "819b4d571c001301b03b8ee6855b1780";
 	private Gson gson;
-	private HttpGet get;
+	//private HttpGet get;
 	
 	
 	public FlightStats() {
 		gson = new Gson();
 	}
+	
+	/*
 	private String get(String endpoint) throws Exception {
 		String uri = endpoint;
 		String responseBody;
@@ -67,16 +69,20 @@ public class FlightStats {
 		}
 		return responseBody;
 	}
-	private String addCredentials(String endpoint) {
+	
+	*/
+	
+	/*private String addCredentials(String endpoint) {
 		return endpoint+"?appId="+appId+"&appKey="+appKey;
-	}
+	}*/
+	
 	
 	//Aeropuertos
 	public Airports getAirports() throws Exception {
-		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/active";
-		String uri = addCredentials(endpoint);
+		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
+		String uri = endpoint.append(Credentials.getAuthentication()).toString();
 		Airports airports= new Airports();
-		String response = get(uri);
+		String response = Net.get(uri);
 		airports = gson.fromJson(response,Airports.class);
 		return airports;
 	}
@@ -84,7 +90,7 @@ public class FlightStats {
 		Airports airports = new Airports();
 		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/countryCode/"+countrycode;
 		String uri = addCredentials(endpoint);
-		String response = get(uri);
+		String response = Net.get(uri);
 		airports = gson.fromJson(response,Airports.class);
 		return airports;
 	}
@@ -92,20 +98,12 @@ public class FlightStats {
 		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/cityCode/"+citycode;
 		String uri = addCredentials(endpoint);
 		Airports airports = new Airports();
-		String response = get(uri);
+		String response = Net.get(uri);
 		airports = gson.fromJson(response,Airports.class);		
 		return airports;
 	}
 	
-	//Aerolineas
-	public Airlines getAirlines() throws Exception{
-		String endpoint = "https://api.flightstats.com/flex/airlines/rest/v1/json/active";
-		String uri = addCredentials(endpoint);
-		Airlines airlines= new Airlines();
-		String response = Net.get(endpoint);
-		airlines = gson.fromJson(response,Airlines.class);
-		return airlines;
-	}
+	
 	
 	public FIDS getFIDS(FIDSParams params) throws Exception {
 		FIDS fids;
@@ -132,7 +130,7 @@ public class FlightStats {
 		for(String key:params.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(params.getParamObject(key));
 		}
-		String response = get(endpoint.toString());
+		String response = Net.get(endpoint.toString());
 		FlightStatusTrack flightstatus = gson.fromJson(response,FlightStatusTrack.class);
 		return flightstatus;
 		
