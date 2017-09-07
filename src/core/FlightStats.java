@@ -15,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 
+import core.network.Net;
 import core.utils.FIDSParams;
 import core.utils.FSTrackParams;
 import pojo.FlightStatus;
@@ -101,7 +102,7 @@ public class FlightStats {
 		String endpoint = "https://api.flightstats.com/flex/airlines/rest/v1/json/active";
 		String uri = addCredentials(endpoint);
 		Airlines airlines= new Airlines();
-		String response = get(uri);
+		String response = Net.get(endpoint);
 		airlines = gson.fromJson(response,Airlines.class);
 		return airlines;
 	}
@@ -113,7 +114,9 @@ public class FlightStats {
 		for(String key:params.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(params.getParamObject(key));
 		}
-		String response = get(endpoint.toString());
+		//String response = get(endpoint.toString());
+		String response = Net.get(endpoint.toString());
+		
 		fids = gson.fromJson(response,FIDS.class);
 		return fids;
 	}
