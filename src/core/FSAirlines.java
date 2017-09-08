@@ -8,10 +8,25 @@ import core.network.Net;
 import pojo.Airline;
 import pojo.arrays.Airlines;
 
+
+
+
+/**
+ * @author Edgar Osorio
+ * 
+ * Clase que permite obtener todas las aerolineas activas en el mundo. La clase permite realizar busquedas por:
+ * Nombre de Aerolinea (exacto)
+ * Aerolinea por codigo IATA
+ * Aerolineas con nombres parecidos (Ejemplo: Aerolineas que su nombre contenga la palabra Air
+ * 
+ * Cuando se intancia esta clase se obtienen todas las Aerolineas de la API Flight Stats)
+ * 
+ */
 public class FSAirlines {
 
 	private Airlines airlines;
 	private Gson gson;
+	
 	
 	public FSAirlines() {
 		super();
@@ -44,7 +59,7 @@ public class FSAirlines {
 		 boolean found = false;
 		 Airline a=null;
 		 Iterator<Airline> i = airlines.getAirlines().iterator();
-		 while(i.hasNext() || found) {
+		 while(i.hasNext() && !found) {
 			 a = i.next();
 			 if(a.getName().trim().equals(name.trim())) {
 				 found=true;
@@ -53,18 +68,36 @@ public class FSAirlines {
 		return a;
 	}
 	
-	public Airlines getAirlineByIata(String iata) {
-		Airlines airlines= new Airlines();
-		ArrayList<Airline> array = new ArrayList<Airline>();
-		
-		Iterator<Airline> iterator = airlines.getAirlines().iterator();
-		while(iterator.hasNext()) {
-			Airline airline = iterator.next();
-			if(airline.getIata().trim().toLowerCase().equals(iata.toLowerCase().trim())) 
-				array.add(airline);
+	public Airline getAirlineByIata(String iata) {
+		 boolean found = false;
+		 Airline a=null;
+		 Iterator<Airline> i = airlines.getAirlines().iterator();
+		 while(i.hasNext() && !found) {
+			 a = i.next();
+			 if(a.getIata().trim().equals(iata.trim())) {
+				 found=true;
+			 }
+		 }
+		return a;
+	}
+	
+	
+	
+	public ArrayList<Airline> getAirlinesNameLike(String name_like){
+		ArrayList<Airline> a = new ArrayList<Airline>();
+		Iterator<Airline> i = airlines.getAirlines().iterator();
+		while(i.hasNext()) {
+			Airline aArline = i.next();
+			if(aArline.getName().toLowerCase().matches(".*"+name_like.toLowerCase()+".*"))
+				a.add(aArline);
 		}
-		airlines.setAirlines(array);
-		return airlines;
+		return a;
+	}
+	
+
+	public int size() {
+		// TODO Auto-generated method stub
+		return airlines.getAirlines().size();
 	}
 	
 }

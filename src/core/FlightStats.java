@@ -1,7 +1,6 @@
 package core;
 
 import com.google.gson.Gson;
-
 import core.network.Net;
 import core.utils.FIDSParams;
 import core.utils.FSTrackParams;
@@ -20,6 +19,7 @@ public class FlightStats {
 	
 	
 	//Aeropuertos
+	/*
 	public Airports getAirports() throws Exception {
 		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
 		String uri = endpoint.append(Credentials.getAuthentication()).toString();
@@ -28,6 +28,8 @@ public class FlightStats {
 		airports = gson.fromJson(response,Airports.class);
 		return airports;
 	}
+	*/
+	/*
 	public Airports getAirportsByCountryCode(String countrycode) throws Exception {
 		Airports airports = new Airports();
 		String endpoint = "https://api.flightstats.com/flex/airports/rest/v1/json/countryCode/"+countrycode;
@@ -44,7 +46,7 @@ public class FlightStats {
 		airports = gson.fromJson(response,Airports.class);		
 		return airports;
 	}
-	
+	*/
 	
 	
 	public FIDS getFIDS(FIDSParams params) throws Exception {
@@ -84,11 +86,20 @@ public class FlightStats {
 		try {
 			
 			FSAirlines airlines = new FSAirlines();
-			System.out.println(airlines.getJson());
+			System.out.println("Numero de Aerolineas --->" +airlines.size());
+			System.out.println("Airline " + airlines.getAirlineByName("Aeromexico").toString());
+			//System.out.println("JSON  --->" + airlines.getJson());
+			System.out.println("Airlines by iata = -->" + airlines.getAirlineByIata("AM").toString());
+			System.out.println("Airlines by Name (LIKE) -->" + airlines.getAirlinesNameLike("Canada").toString());
 			
-			//fs.getAirlines();
-			//fs.getAirports();
-			//fs.getAirportsByCityCode("CUN");
+	
+			FSAirports airports = new FSAirports();
+			//System.out.println(airports.getJson());
+			System.out.println("Airports --> " + airports.size());
+			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
+			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
+			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
+			
 			
 			//Airlines airlines = fs.getAirlines();
 			//Airports airports =  fs.getAirportsByCountryCode("MX");
