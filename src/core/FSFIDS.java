@@ -51,11 +51,51 @@ public class FSFIDS {
 		parameters.addParam("includeAirlines", value);
 	}
 	
+	public void setIncludeCodeshares(String value) {
+		parameters.addParam("includeCodeshares", value);
+	}
 	
+	public void setTerminal(String value) {
+		parameters.addParam("terminal", value);
+	}
 	
+	public void setTimeFormat(String value) {
+		parameters.addParam("timeFormat", value);
+	}
 	
+	public void setTimeWindowBegin(String value) {
+		parameters.addParam("timeWindowBegin", value);
+	}
 	
+	public void setTimeWindowEnd(String value) {
+		parameters.addParam("timeWindowEnd", value);
+	}
 
+	public void setMaxFlights(String value) {
+		parameters.addParam("maxFlights", value);
+	}
+	
+	public void setLastMinutes(String value) {
+		parameters.addParam("maxFlights", value);
+	}
+	
+	public void setBoardingMinutes(String value) {
+		parameters.addParam("boardingMinutes	", value);
+	}
+	
+	public void setUseRunwayTimes(String value) {
+		parameters.addParam("useRunwayTimes", value);
+	}
+	
+	public void setExcludeCargoOnlyFlights(String value) {
+		parameters.addParam("excludeCargoOnlyFlights", value);
+	}
+	
+	public void setExtendedOptions(String value) {
+		parameters.addParam("extendedOptions", value);
+	}
+	
+	
 	public int size() {
 		return fids.getFidsData().size();
 	}
