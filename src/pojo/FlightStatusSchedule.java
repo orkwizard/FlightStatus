@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import pojo.arrays.Downlines;
 import pojo.arrays.Uplines;
 
-public class Schedule {
+public class FlightStatusSchedule {
 
 	private String flightType;
 	private String serviceClasses;
@@ -15,7 +15,7 @@ public class Schedule {
 	
 	
 	
-	public Schedule() {
+	public FlightStatusSchedule() {
 		super();
 	}
 

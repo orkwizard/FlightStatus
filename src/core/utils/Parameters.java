@@ -16,8 +16,10 @@ private Map<String,String> params;
 		params.put(key, value);
 	}
 	
-	public void deleteParam(String key) {
-		params.remove(key);
+	public boolean deleteParam(String key) {
+		if(params.remove(key)!=null)
+			return true;
+		return false;
 	}
 	
 	public String getParamObject(String key) {

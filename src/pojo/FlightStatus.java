@@ -27,7 +27,7 @@ public class FlightStatus implements Serializable{
 	private Times departureDate;
 	private Times arrivalDate;
 	private String status;
-	private Schedule schedule;
+	private FlightStatusSchedule schedule;
 	private OperationalTimes operationalTimes;
 	private ArrayList<CodeShare> codeshares;
 	private Delay delays;
@@ -151,11 +151,11 @@ public class FlightStatus implements Serializable{
 		this.status = status;
 	}
 
-	public Schedule getSchedule() {
+	public FlightStatusSchedule getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(Schedule schedule) {
+	public void setSchedule(FlightStatusSchedule schedule) {
 		this.schedule = schedule;
 	}
 

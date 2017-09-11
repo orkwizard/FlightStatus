@@ -1,5 +1,8 @@
 package core;
 
+import com.google.gson.Gson;
+
+import core.network.Net;
 import core.utils.FIDSParams;
 import pojo.arrays.FIDS;
 
@@ -8,26 +11,29 @@ public class FSFIDS {
 	private String airport;
 	private FIDSParams parameters;
 	private FIDS fids;
+	private Gson gson;
 	
-	public FSFIDS(String a,FIDSParams p) {
+	public FSFIDS(String a) {
 		super();
 		airport = a;
-		parameters = p;
-	}
-	
-	
-	private FIDS getFIDS() {
-		
-		
-		return null;
-	}
-	
-	private void initFIDS() {
-		// TODO Auto-generated method stub
-		
-		
+		parameters = new  FIDSParams();
+		gson = new Gson();
 	}
 
+	
+	public FIDS getFlightStatusArrivals() throws Exception {
+		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/fids/rest/v1/json/");
+		endpoint.append(airport)
+		.append("/arrivals")
+		.append(Credentials.getAuthentication());   // ?appId=").append(appId).append("&appKey=").append(appKey);
+		for(String key:parameters.getParams().keySet()) {
+			endpoint.append("&").append(key).append("=").append(parameters.getParamObject(key));
+		}
+		String response = Net.get(endpoint.toString());
+		fids = gson.fromJson(response,FIDS.class);
+		return fids;
+		
+	}
 	
 	public void updateAirport(String a) {
 		airport = a;
@@ -93,6 +99,17 @@ public class FSFIDS {
 	
 	public void setExtendedOptions(String value) {
 		parameters.addParam("extendedOptions", value);
+	}
+	
+	public void removeParameters() {
+		parameters.getParams().clear();
+	}
+	
+	public boolean updateParameter(String key,String value) {
+		boolean valid = parameters.deleteParam(key);
+		if(valid)
+			parameters.addParam(key, value);
+		return valid;
 	}
 	
 	

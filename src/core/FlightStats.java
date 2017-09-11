@@ -47,7 +47,7 @@ public class FlightStats {
 		return airports;
 	}
 	*/
-	
+	/*
 	
 	public FIDS getFIDS(FIDSParams params) throws Exception {
 		FIDS fids;
@@ -62,6 +62,10 @@ public class FlightStats {
 		fids = gson.fromJson(response,FIDS.class);
 		return fids;
 	}
+	
+	*/
+	
+	
 	//Estatus
 	public FlightStatusTrack getFlightStatusArrivals(FSTrackParams params) throws Exception {
 		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/flightstatus/rest/v2/json/airport/status/");
@@ -84,25 +88,32 @@ public class FlightStats {
 		
 		FlightStats fs = new FlightStats();
 		try {
-			
+		
 			FSAirlines airlines = new FSAirlines();
 			System.out.println("Numero de Aerolineas --->" +airlines.size());
 			System.out.println("Airline " + airlines.getAirlineByName("Aeromexico").toString());
-			//System.out.println("JSON  --->" + airlines.getJson());
+			System.out.println("JSON  --->" + airlines.getJson());
 			System.out.println("Airlines by iata = -->" + airlines.getAirlineByIata("AM").toString());
 			System.out.println("Airlines by Name (LIKE) -->" + airlines.getAirlinesNameLike("Canada").toString());
 			
 	
+			/*
 			FSAirports airports = new FSAirports();
-			//System.out.println(airports.getJson());
+			System.out.println(airports.getJson());
 			System.out.println("Airports --> " + airports.size());
 			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
 			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
 			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
+			*/
 			
+			FSFIDS fids = new FSFIDS("CUN");
+			fids.setRequestedFields("flightId,flight,airlineCode,airlineName,lastUpdatedTimeUtc,flightNumber,operatingAirlineName,operatedFlightNumber,airlineLogoUrlPng,lastUpdatedTime,city,currentTime,gate,remarks,remarksCode,primaryMarketingAirlineCode");
+			fids.setTimeWindowBegin("10");
+			fids.setTimeWindowEnd("10");
+			fids.setMaxFlights("10");
+			System.out.println("FIDS -->>>" + fids.getFlightStatusArrivals().toString());
 			
-			//Airlines airlines = fs.getAirlines();
-			//Airports airports =  fs.getAirportsByCountryCode("MX");
+	
 			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
 			/*
 			FSTrackParams fstrackParams = new FSTrackParams();
@@ -115,6 +126,10 @@ public class FlightStats {
 			fstrackParams.addParam("maxFlights","10");
 			FlightStatusTrack fst = fs.getFlightStatusArrivals(fstrackParams);
 			System.err.println(fst.toString());
+			
+			
+			
+			
 			
 			
 			FIDSParams params = new FIDSParams();
