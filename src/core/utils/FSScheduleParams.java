@@ -1,5 +1,8 @@
 package core.utils;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class FSScheduleParams extends Parameters {
 
 	private String airport;
@@ -12,6 +15,9 @@ public class FSScheduleParams extends Parameters {
 	private int year;
 	private int month;
 	private int day;
+        
+	private Date date;
+
 	
 	
 	public FSScheduleParams() {
@@ -19,6 +25,26 @@ public class FSScheduleParams extends Parameters {
 		// TODO Auto-generated constructor stub
 	}
 
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        this.year = cal.get(Calendar.YEAR);
+        this.month = cal.get(Calendar.MONTH)+1;
+        this.day = cal.get(Calendar.DAY_OF_MONTH);
+
+        
+        this.date = date;
+    }
+        
+        
+        
     public String getArrivingAt() {
         return arrivingAt;
     }

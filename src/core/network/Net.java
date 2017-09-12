@@ -18,18 +18,25 @@ public class Net {
 	public Net() {
 		super();
 	}
-	
-	
-	
-	
+        
+
 	public static String get(String endpoint) throws Exception {
+            
+            return get(endpoint, true);
+            
+        }
+	
+	public static String get(String endpoint,Boolean debug) throws Exception {
 		String uri = endpoint;
 		String responseBody;
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
 			HttpGet httpget = new HttpGet(uri);
+                       
+                        if(debug==true){
 			System.out.println("Executing request :--->" + httpget.getRequestLine());
-			
+                        }
+                        
 			ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 				
 				@Override

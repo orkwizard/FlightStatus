@@ -4,6 +4,10 @@ import com.google.gson.Gson;
 import core.network.Net;
 import core.utils.FSScheduleParams;
 import core.utils.FSTrackParams;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import pojo.ExampleSquedule;
 import pojo.FlightStatusTrack;
 
@@ -136,10 +140,17 @@ public class FlightStats {
 			FSScheduleParams fsScheduleParams = new FSScheduleParams();
 			fsScheduleParams.setCarrier("AM");
                         fsScheduleParams.setFlightnumber("448");
+
+
+                        String elDiaString = "2017-09-11";
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        fsScheduleParams.setDate(format.parse(elDiaString));
+                        
+                        /*
 			fsScheduleParams.setYear(2017);
 			fsScheduleParams.setMonth(9);
 			fsScheduleParams.setDay(11);
-                        
+                        */
                         
 			//fsScheduleParams.setArrivingAt("CUN");
 			fsScheduleParams.setDepartingAt("CUN");
@@ -148,6 +159,7 @@ public class FlightStats {
                         
                         
                         FSSqueduledFlights fss = new FSSqueduledFlights();
+                        fss.setDebug(true);
 			ExampleSquedule exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
 			System.out.println(exampleSquedule.getScheduledFlights().toString());	
                         

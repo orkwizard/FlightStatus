@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import core.network.Net;
 import pojo.ExampleSquedule;
 import core.utils.FSScheduleParams;
-import static java.util.Collections.list;
 import java.util.Iterator;
 import java.util.List;
 import pojo.ScheduledFlight;
@@ -22,7 +21,9 @@ public class FSSqueduledFlights {
 
 	private ExampleSquedule exampleSquedule;
 	private Gson gson;
-	
+	private boolean debug=false;
+
+
 	
 	public FSSqueduledFlights() {
 		super();
@@ -47,6 +48,10 @@ public class FSSqueduledFlights {
                 
                 
 	}
+        
+        
+        
+        
 	public ExampleSquedule getSchedule(FSScheduleParams params, String type) throws Exception{
             
 		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/schedules/rest/v1/json/flight/");
@@ -62,7 +67,7 @@ public class FSSqueduledFlights {
 		for(String key:params.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(params.getParamObject(key));
 		}
-		String response = Net.get(endpoint.toString());
+		String response = Net.get(endpoint.toString(), this.isDebug());
                 
 		exampleSquedule = gson.fromJson(response,ExampleSquedule.class);
                 
@@ -88,7 +93,14 @@ public class FSSqueduledFlights {
 	}
         
         
-        
+            public boolean isDebug() {
+                return debug;
+            }
+
+            public void setDebug(boolean debug) {
+                this.debug = debug;
+            }
+
         
         
 	
