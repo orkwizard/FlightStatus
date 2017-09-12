@@ -2,11 +2,10 @@ package core;
 
 import com.google.gson.Gson;
 import core.network.Net;
-import core.utils.FIDSParams;
+import core.utils.FSScheduleParams;
 import core.utils.FSTrackParams;
+import pojo.ExampleSquedule;
 import pojo.FlightStatusTrack;
-import pojo.arrays.Airports;
-import pojo.arrays.FIDS;
 
 public class FlightStats {
 
@@ -97,14 +96,14 @@ public class FlightStats {
 			System.out.println("Airlines by Name (LIKE) -->" + airlines.getAirlinesNameLike("Canada").toString());
 			
 	
-			/*
+			
 			FSAirports airports = new FSAirports();
 			System.out.println(airports.getJson());
 			System.out.println("Airports --> " + airports.size());
 			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
 			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
 			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
-			*/
+			
 			
 			FSFIDS fids = new FSFIDS("CUN");
 			fids.setRequestedFields("flightId,flight,airlineCode,airlineName,lastUpdatedTimeUtc,flightNumber,operatingAirlineName,operatedFlightNumber,airlineLogoUrlPng,lastUpdatedTime,city,currentTime,gate,remarks,remarksCode,primaryMarketingAirlineCode");
@@ -126,11 +125,28 @@ public class FlightStats {
 			fstrackParams.addParam("maxFlights","10");
 			FlightStatusTrack fst = fs.getFlightStatusArrivals(fstrackParams);
 			System.err.println(fst.toString());
+			*/
 			
+                        System.out.println("----------------");
+                        System.out.println("----------------");
+                        System.out.println("----------------");
+                        
+			FSScheduleParams fsScheduleParams = new FSScheduleParams();
+			fsScheduleParams.setCarrier("AM");
+                        fsScheduleParams.setFlightnumber("448");
+			fsScheduleParams.setYear(2017);
+			fsScheduleParams.setMonth(9);
+			fsScheduleParams.setDay(11);
 			
+                        
+                        FSSqueduledFlights fss = new FSSqueduledFlights();
+			ExampleSquedule exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
+			System.out.println(exampleSquedule.getScheduledFlights().toString());	
+                        
+			exampleSquedule = fss.getDepartingSchedule(fsScheduleParams);
+			System.out.println(exampleSquedule.getScheduledFlights().toString());			
 			
-			
-			
+			/*
 			
 			FIDSParams params = new FIDSParams();
 			params.setAirport("CUN");

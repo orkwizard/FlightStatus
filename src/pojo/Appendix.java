@@ -6,14 +6,14 @@ import pojo.arrays.Airlines;
 import pojo.arrays.Airports;
 import pojo.arrays.Equipments;
 
-public class Apendix {
+public class Appendix {
 
 	private 	ArrayList<Airline> airlines;
 	private 	ArrayList<Airport> airports;
 	private ArrayList<Equipment> equipments;
 	
 	
-	public Apendix() {
+	public Appendix() {
 		super();
 	}
 	

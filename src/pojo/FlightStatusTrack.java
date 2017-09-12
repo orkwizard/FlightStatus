@@ -8,7 +8,7 @@ import pojo.arrays.FlightStatuses;
 public class FlightStatusTrack implements Serializable {
 
 	private Request request;
-	private Apendix appendix;
+	private Appendix appendix;
 	private ArrayList<FlightStatus> flightStatuses;
 	
 	
@@ -28,12 +28,12 @@ public class FlightStatusTrack implements Serializable {
 	}
 
 
-	public Apendix getAppendix() {
+	public Appendix getAppendix() {
 		return appendix;
 	}
 
 
-	public void setAppendix(Apendix appendix) {
+	public void setAppendix(Appendix appendix) {
 		this.appendix = appendix;
 	}
 
