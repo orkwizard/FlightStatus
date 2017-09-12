@@ -5,6 +5,10 @@ public class FSScheduleParams extends Parameters {
 	private String airport;
         private String carrier;
         private String flightnumber;
+        private String arrivingAt;
+        private String departingAt;
+
+
 	private int year;
 	private int month;
 	private int day;
@@ -15,6 +19,22 @@ public class FSScheduleParams extends Parameters {
 		// TODO Auto-generated constructor stub
 	}
 
+    public String getArrivingAt() {
+        return arrivingAt;
+    }
+
+    public void setArrivingAt(String arrivingAt) {
+        this.arrivingAt = arrivingAt;
+    }
+
+    public String getDepartingAt() {
+        return departingAt;
+    }
+
+    public void setDepartingAt(String departingAt) {
+        this.departingAt = departingAt;
+    }
+        
     public String getFlightnumber() {
         return flightnumber;
     }

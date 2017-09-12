@@ -2,13 +2,13 @@ package core;
 
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import core.network.Net;
 import pojo.ExampleSquedule;
 import core.utils.FSScheduleParams;
-
+import static java.util.Collections.list;
+import java.util.Iterator;
+import java.util.List;
+import pojo.ScheduledFlight;
 
 
 /**
@@ -65,6 +65,23 @@ public class FSSqueduledFlights {
 		String response = Net.get(endpoint.toString());
                 
 		exampleSquedule = gson.fromJson(response,ExampleSquedule.class);
+                
+                List<ScheduledFlight> scheduledFlightsFix = exampleSquedule.getScheduledFlights();
+                
+                
+                    
+                        for (Iterator<ScheduledFlight> iter = scheduledFlightsFix.listIterator(); iter.hasNext(); ) {
+                            ScheduledFlight a = iter.next();
+
+                            if ((params.getArrivingAt()!=null && !a.getArrivalAirportFsCode().equals(params.getArrivingAt()))
+                                ||(params.getDepartingAt()!=null && !a.getDepartureAirportFsCode().equals(params.getDepartingAt()))
+                            ) {
+                                iter.remove();
+                            }
+                            
+
+                        }
+                
                 
 		return exampleSquedule;
                 

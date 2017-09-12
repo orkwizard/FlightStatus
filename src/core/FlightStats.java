@@ -87,7 +87,9 @@ public class FlightStats {
 		
 		FlightStats fs = new FlightStats();
 		try {
-		
+                        
+                    
+                        /*
 			FSAirlines airlines = new FSAirlines();
 			System.out.println("Numero de Aerolineas --->" +airlines.size());
 			System.out.println("Airline " + airlines.getAirlineByName("Aeromexico").toString());
@@ -111,7 +113,7 @@ public class FlightStats {
 			fids.setTimeWindowEnd("10");
 			fids.setMaxFlights("10");
 			System.out.println("FIDS -->>>" + fids.getFlightStatusArrivals().toString());
-			
+			*/
 	
 			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
 			/*
@@ -137,7 +139,13 @@ public class FlightStats {
 			fsScheduleParams.setYear(2017);
 			fsScheduleParams.setMonth(9);
 			fsScheduleParams.setDay(11);
+                        
+                        
+			//fsScheduleParams.setArrivingAt("CUN");
+			fsScheduleParams.setDepartingAt("CUN");
 			
+                        
+                        
                         
                         FSSqueduledFlights fss = new FSSqueduledFlights();
 			ExampleSquedule exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
