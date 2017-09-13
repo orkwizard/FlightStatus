@@ -12,7 +12,8 @@ public class FSFIDS {
 	private FIDSParams parameters;
 	private FIDS fids;
 	private Gson gson;
-	
+	private boolean debug=false;
+        
 	public FSFIDS(String a) {
 		super();
 		airport = a;
@@ -29,7 +30,7 @@ public class FSFIDS {
 		for(String key:parameters.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(parameters.getParamObject(key));
 		}
-		String response = Net.get(endpoint.toString());
+		String response = Net.get(endpoint.toString(),this.isDebug());
 		fids = gson.fromJson(response,FIDS.class);
 		return fids;
 		
@@ -117,4 +118,15 @@ public class FSFIDS {
 		return fids.getFidsData().size();
 	}
 	
+            public boolean isDebug() {
+                return debug;
+            }
+
+            public void setDebug(boolean debug) {
+                this.debug = debug;
+            }
+
+        
+        
+        
 }

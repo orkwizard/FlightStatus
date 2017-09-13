@@ -27,7 +27,9 @@ public class FSAirlines {
 	private Airlines airlines;
 	private Gson gson;
 	
-	
+	private boolean debug=false;
+        
+        
 	public FSAirlines() {
 		super();
 		gson = new Gson();
@@ -43,7 +45,7 @@ public class FSAirlines {
 	private void initAirlines() throws Exception{
 		String endpoint = "https://api.flightstats.com/flex/airlines/rest/v1/json/active";
 		String uri = endpoint+Credentials.getAuthentication();
-		String response = Net.get(uri);
+		String response = Net.get(uri,this.isDebug());
 		airlines = gson.fromJson(response,Airlines.class);
 	}
 	
@@ -99,5 +101,16 @@ public class FSAirlines {
 		// TODO Auto-generated method stub
 		return airlines.getAirlines().size();
 	}
+        
+        
+        
+            public boolean isDebug() {
+                return debug;
+            }
+
+            public void setDebug(boolean debug) {
+                this.debug = debug;
+            }
+
 	
 }

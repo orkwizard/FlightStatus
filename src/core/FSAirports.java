@@ -12,7 +12,9 @@ import pojo.arrays.Airports;
 public class FSAirports {
 	private Airports airports;
 	private Gson gson=new Gson();
-	
+	private boolean debug=false;
+        
+        
 	public FSAirports(){
 		super();
 		try {
@@ -27,7 +29,7 @@ public class FSAirports {
 		// TODO Auto-generated method stub
 		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
 		String uri = endpoint.append(Credentials.getAuthentication()).toString();
-		String response = Net.get(uri);
+		String response = Net.get(uri,this.isDebug());
 		airports = gson.fromJson(response,Airports.class);
 	}
 	
@@ -87,4 +89,14 @@ public class FSAirports {
 		return airports.getAirports().size();
 	}
 	
+        
+            public boolean isDebug() {
+                return debug;
+            }
+
+            public void setDebug(boolean debug) {
+                this.debug = debug;
+            }
+
+        
 }
