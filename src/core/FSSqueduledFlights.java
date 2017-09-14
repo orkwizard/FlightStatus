@@ -67,6 +67,12 @@ public class FSSqueduledFlights {
 		for(String key:params.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(params.getParamObject(key));
 		}
+                
+                if(params.getCodeType()!=null){
+                    endpoint.append("&").append("codeType").append("=").append(params.getCodeType());
+                }
+                
+                
 		String response = Net.get(endpoint.toString(), this.isDebug());
                 
 		exampleSquedule = gson.fromJson(response,ExampleSquedule.class);

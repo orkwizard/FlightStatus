@@ -17,6 +17,9 @@ public class FSScheduleParams extends Parameters {
 	private int day;
         
 	private Date date;
+        
+        private String codeType;
+
 
 	
 	
@@ -24,7 +27,14 @@ public class FSScheduleParams extends Parameters {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+        
+    public String getCodeType() {
+        return codeType;
+    }
 
+    public void setCodeType(String codeType) {
+        this.codeType = codeType;
+    }
 
     public Date getDate() {
         return date;
