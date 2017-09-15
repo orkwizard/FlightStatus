@@ -9,7 +9,7 @@ import pojo.Airline;
 import pojo.arrays.Airlines;
 
 
-
+import core.MethodVersion;
 
 /**
  * @author Edgar Osorio
@@ -28,6 +28,8 @@ public class FSAirlines {
 	private Gson gson;
 	
 	private boolean debug=false;
+        
+        private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
         
         
 	public FSAirlines() {
@@ -111,6 +113,15 @@ public class FSAirlines {
             public void setDebug(boolean debug) {
                 this.debug = debug;
             }
+
+
+        public String getMethodVersion() {
+            return methodVersion;
+        }
+
+        public void setMethodVersion(String methodVersion) {
+            this.methodVersion = methodVersion;
+        }
 
 	
 }

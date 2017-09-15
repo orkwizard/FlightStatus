@@ -6,10 +6,11 @@ import core.utils.FSScheduleParams;
 import core.utils.FSTrackParams;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+
 import pojo.ExampleSquedule;
 import pojo.FlightStatusTrack;
+
+import core.MethodVersion;
 
 public class FlightStats {
 
@@ -93,7 +94,7 @@ public class FlightStats {
 		try {
                         
                     
-                        /*
+                        
 			FSAirlines airlines = new FSAirlines();
 			System.out.println("Numero de Aerolineas --->" +airlines.size());
 			System.out.println("Airline " + airlines.getAirlineByName("Aeromexico").toString());
@@ -117,7 +118,7 @@ public class FlightStats {
 			fids.setTimeWindowEnd("10");
 			fids.setMaxFlights("10");
 			System.out.println("FIDS -->>>" + fids.getFlightStatusArrivals().toString());
-			*/
+			
 	
 			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
 			/*
@@ -142,7 +143,7 @@ public class FlightStats {
                         fsScheduleParams.setFlightnumber("448");
 
 
-                        String elDiaString = "2017-09-11";
+                        String elDiaString = "2017-09-15";
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         fsScheduleParams.setDate(format.parse(elDiaString));
                         
@@ -160,6 +161,7 @@ public class FlightStats {
                         
                         FSSqueduledFlights fss = new FSSqueduledFlights();
                         fss.setDebug(true);
+                        fss.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
 			ExampleSquedule exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
 			System.out.println(exampleSquedule.getScheduledFlights().toString());	
                         

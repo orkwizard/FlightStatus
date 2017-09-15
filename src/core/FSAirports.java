@@ -9,10 +9,14 @@ import core.network.Net;
 import pojo.Airport;
 import pojo.arrays.Airports;
 
+import core.MethodVersion;
+
 public class FSAirports {
 	private Airports airports;
 	private Gson gson=new Gson();
 	private boolean debug=false;
+        
+        private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
         
         
 	public FSAirports(){
@@ -97,6 +101,15 @@ public class FSAirports {
             public void setDebug(boolean debug) {
                 this.debug = debug;
             }
+
+
+        public String getMethodVersion() {
+            return methodVersion;
+        }
+
+        public void setMethodVersion(String methodVersion) {
+            this.methodVersion = methodVersion;
+        }
 
         
 }

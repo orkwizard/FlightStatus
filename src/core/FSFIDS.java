@@ -6,6 +6,8 @@ import core.network.Net;
 import core.utils.FIDSParams;
 import pojo.arrays.FIDS;
 
+import core.MethodVersion;
+
 public class FSFIDS {
 
 	private String airport;
@@ -13,6 +15,9 @@ public class FSFIDS {
 	private FIDS fids;
 	private Gson gson;
 	private boolean debug=false;
+        
+        private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
+        
         
 	public FSFIDS(String a) {
 		super();
@@ -127,6 +132,14 @@ public class FSFIDS {
             }
 
         
-        
+
+        public String getMethodVersion() {
+            return methodVersion;
+        }
+
+        public void setMethodVersion(String methodVersion) {
+            this.methodVersion = methodVersion;
+        }
+
         
 }

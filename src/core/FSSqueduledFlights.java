@@ -23,8 +23,10 @@ public class FSSqueduledFlights {
 	private Gson gson;
 	private boolean debug=false;
 
-
-	
+        private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
+        
+        
+        
 	public FSSqueduledFlights() {
 		super();
 		gson = new Gson();
@@ -73,7 +75,7 @@ public class FSSqueduledFlights {
                 }
                 
                 
-		String response = Net.get(endpoint.toString(), this.isDebug());
+		String response = Net.get(endpoint.toString(), this.isDebug(), this.getMethodVersion());
                 
 		exampleSquedule = gson.fromJson(response,ExampleSquedule.class);
                 
@@ -106,10 +108,17 @@ public class FSSqueduledFlights {
             public void setDebug(boolean debug) {
                 this.debug = debug;
             }
+            
+            
 
-        
-        
-	
+        public String getMethodVersion() {
+            return methodVersion;
+        }
+
+        public void setMethodVersion(String methodVersion) {
+            this.methodVersion = methodVersion;
+        }
+
         
 
 	public int size() {
