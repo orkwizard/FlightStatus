@@ -46,11 +46,12 @@ public class Net {
                 
                 if(debug==true){
                 System.out.println("Executing request :--->" + uri);
+                    if(GetMethodVersion.equals(MethodVersion.METHOD_VERSION_OLD)){
+                        System.out.println("using Old get Method");
+                    }
                 }
                         
-                if(GetMethodVersion.equals(MethodVersion.METHOD_VERSION_OLD)){
-                    System.out.println("using Old get Method");
-                }
+
                 
                 
 		
