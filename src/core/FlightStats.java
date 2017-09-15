@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import pojo.ExampleSquedule;
 import pojo.FlightStatusTrack;
 
-import core.MethodVersion;
+import pojo.Airport;
 
 public class FlightStats {
 
@@ -92,9 +92,35 @@ public class FlightStats {
 		
 		FlightStats fs = new FlightStats();
 		try {
+                        FSAirports airports = new FSAirports();
+
+                        airports.setDebug(true);
                         
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+                        Airport airport=airports.getAirportByFS("GDL");
+                        
+                        System.out.println("Airport --> " + airport);
+                        
+                        
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+			
+			System.out.println(airports.getJson());
+			System.out.println("Airports --> " + airports.size());
+			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
+			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
+			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
+			
+                      
+                        
+                        /*
                     
-                        
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
 			FSAirlines airlines = new FSAirlines();
 			System.out.println("Numero de Aerolineas --->" +airlines.size());
 			System.out.println("Airline " + airlines.getAirlineByName("Aeromexico").toString());
@@ -102,16 +128,11 @@ public class FlightStats {
 			System.out.println("Airlines by iata = -->" + airlines.getAirlineByIata("AM").toString());
 			System.out.println("Airlines by Name (LIKE) -->" + airlines.getAirlinesNameLike("Canada").toString());
 			
-	
-			
-			FSAirports airports = new FSAirports();
-			System.out.println(airports.getJson());
-			System.out.println("Airports --> " + airports.size());
-			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
-			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
-			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
-			
-			
+	*/
+                        
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
+			System.out.println(" --------------- ");
 			FSFIDS fids = new FSFIDS("CUN");
 			fids.setRequestedFields("flightId,flight,airlineCode,airlineName,lastUpdatedTimeUtc,flightNumber,operatingAirlineName,operatedFlightNumber,airlineLogoUrlPng,lastUpdatedTime,city,currentTime,gate,remarks,remarksCode,primaryMarketingAirlineCode");
 			fids.setTimeWindowBegin("10");

@@ -13,6 +13,7 @@ import core.MethodVersion;
 
 public class FSAirports {
 	private Airports airports;
+	private boolean filledAirports=false;
 	private Gson gson=new Gson();
 	private boolean debug=false;
         
@@ -21,27 +22,57 @@ public class FSAirports {
         
 	public FSAirports(){
 		super();
+
+	}
+
+	private Airports getAllAirports() {
+		// TODO Auto-generated method stub
+                
 		try {
-			initAirports();
+                    StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
+                    String uri = endpoint.append(Credentials.getAuthentication()).toString();
+                    String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
+                    airports = gson.fromJson(response,Airports.class);
+                    filledAirports=true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	private void initAirports() throws Exception {
-		// TODO Auto-generated method stub
-		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
-		String uri = endpoint.append(Credentials.getAuthentication()).toString();
-		String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
-		airports = gson.fromJson(response,Airports.class);
+                
+                return airports;
+                
 	}
 	
 	public String getJson() {
+            
+                if(!filledAirports){
+                    this.getAllAirports();
+                }
 		return gson.toJson(airports);
 	}
 	
+	public Airport getAirportByFS(String fs){
+                Airport airport=null;
+                
+		try {
+                    StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/fs/"+fs);
+                    String uri = endpoint.append(Credentials.getAuthentication()).toString();
+                    String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
+                    airport = gson.fromJson(response,Airport.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+                
+                return airport;
+	}
+	
+	
 	public ArrayList<Airport> getAirportsByCountryCode(String country_code){
+            
+                if(!filledAirports){
+                    this.getAllAirports();
+                }
+            
 		ArrayList<Airport> array = new ArrayList<Airport>();
 		Iterator<Airport> i = airports.getAirports().iterator();
 		while(i.hasNext()) {
@@ -53,6 +84,11 @@ public class FSAirports {
 	}
 	
 	public ArrayList<Airport> getAirportsByCity(String city){
+            
+                if(!filledAirports){
+                    this.getAllAirports();
+                }
+            
 		ArrayList<Airport> array = new ArrayList<Airport>();
 		Iterator<Airport> i = airports.getAirports().iterator();
 		while(i.hasNext()) {
@@ -65,6 +101,10 @@ public class FSAirports {
 	}
 	
 	public ArrayList<Airport> getAirportsByCityCode(String city_code){
+                if(!filledAirports){
+                    this.getAllAirports();
+                }
+                
 		ArrayList<Airport> array = new ArrayList<Airport>();
 		Iterator<Airport> i = airports.getAirports().iterator();
 		while(i.hasNext()) {
@@ -78,6 +118,9 @@ public class FSAirports {
 	
 	
 	public ArrayList<Airport> getAirportsByRegion(String region){
+                if(!filledAirports){
+                    this.getAllAirports();
+                }
 		ArrayList<Airport> array = new ArrayList<Airport>();
 		Iterator<Airport> i = airports.getAirports().iterator();
 		while(i.hasNext()) {
