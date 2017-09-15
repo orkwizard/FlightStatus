@@ -47,7 +47,7 @@ public class FSAirlines {
 	private void initAirlines() throws Exception{
 		String endpoint = "https://api.flightstats.com/flex/airlines/rest/v1/json/active";
 		String uri = endpoint+Credentials.getAuthentication();
-		String response = Net.get(uri,this.isDebug());
+		String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
 		airlines = gson.fromJson(response,Airlines.class);
 	}
 	

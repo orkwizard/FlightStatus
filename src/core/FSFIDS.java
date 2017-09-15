@@ -35,7 +35,7 @@ public class FSFIDS {
 		for(String key:parameters.getParams().keySet()) {
 			endpoint.append("&").append(key).append("=").append(parameters.getParamObject(key));
 		}
-		String response = Net.get(endpoint.toString(),this.isDebug());
+		String response = Net.get(endpoint.toString(),this.isDebug(),this.getMethodVersion());
 		fids = gson.fromJson(response,FIDS.class);
 		return fids;
 		

@@ -33,7 +33,7 @@ public class FSAirports {
 		// TODO Auto-generated method stub
 		StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/active");
 		String uri = endpoint.append(Credentials.getAuthentication()).toString();
-		String response = Net.get(uri,this.isDebug());
+		String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
 		airports = gson.fromJson(response,Airports.class);
 	}
 	

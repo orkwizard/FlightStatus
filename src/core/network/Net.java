@@ -17,6 +17,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import core.MethodVersion;
+
 public class Net {
 	CloseableHttpClient httpclient;
 	HttpGet httpget;
@@ -34,11 +36,11 @@ public class Net {
 	
 	public static String get(String endpoint,Boolean debug) throws Exception {
             
-                return get(endpoint, debug,"get");
+                return get(endpoint, debug,MethodVersion.METHOD_VERSION_NEW);
                 
 	}
         
-	public static String get(String endpoint,Boolean debug, String MethodVersion) throws Exception {
+	public static String get(String endpoint,Boolean debug, String GetMethodVersion) throws Exception {
 		String uri = endpoint;
 		String responseBody="";
                 
@@ -46,22 +48,19 @@ public class Net {
                 System.out.println("Executing request :--->" + uri);
                 }
                         
-                if(MethodVersion.equals("getold")){
+                if(GetMethodVersion.equals(MethodVersion.METHOD_VERSION_OLD)){
                     System.out.println("using Old get Method");
                 }
+                
                 
 		
 		try {
                     
-                    if(MethodVersion.equals("get")){//El método original
+                    if(GetMethodVersion.equals(MethodVersion.METHOD_VERSION_NEW)){//El método original
                 
                 
                         CloseableHttpClient httpclient = HttpClients.createDefault();
 			HttpGet httpget = new HttpGet(uri);
-                       
-                        if(debug==true){
-			System.out.println("Executing request :--->" + httpget.getRequestLine());
-                        }
                         
 			ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 				
@@ -83,9 +82,9 @@ public class Net {
 			httpclient.close();
                     }
                     
-                    if(MethodVersion.equals("getold")){
+                    if(GetMethodVersion.equals(MethodVersion.METHOD_VERSION_OLD)){
                         
-                        responseBody= Net.GetOld(uri,"");
+                        responseBody= Net.GetOld(uri);
                         
                     }
                     
@@ -103,8 +102,7 @@ public class Net {
         
         
         
-        public static String GetOld(String url, String params) throws IOException, Exception {
-                url=url+params;
+        public static String GetOld(String url) throws IOException, Exception {
                 url=url.replaceAll(" ","%20");
                 String jsonText="";
                 InputStream is = new URL(url).openStream();
