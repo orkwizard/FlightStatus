@@ -68,14 +68,14 @@ public class Net {
 				@Override
 				public String handleResponse(final HttpResponse response) throws ClientProtocolException, IOException {
 					// TODO Auto-generated method stub
-					int status = response.getStatusLine().getStatusCode();
-					if(status >=200 && status < 300) {
+					/*int status = response.getStatusLine().getStatusCode();
+					if(status >=200 && status < 300) {*/
 						HttpEntity entity = response.getEntity();
 						return entity != null ? EntityUtils.toString(entity) : null;
-					}else
+					/*}else
 					{
 						throw new ClientProtocolException("Unexpected response status " + status);
-					}
+					}*/
 				}
 			};
 		

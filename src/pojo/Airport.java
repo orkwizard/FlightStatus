@@ -8,25 +8,25 @@ public class Airport implements Serializable{
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String fs="onoooo";
+	private String fs;
 	private String iata;
 	private String icao;
-	//private String faa;
+	private String faa;
 	private String name;
-	//private String street1;
-	//private String street2;
+	private String street1;
+	private String street2;
 	private String city;
 	private String cityCode;
-	//private String district;
-	//private String stateCode;
-	//private String postalCode;
+	private String district;
+	private String stateCode;
+	private String postalCode;
 	private String countryCode;
 	private String countryName;
 	private String regionName;
 	private String timeZoneRegionName;
-	//private String weatherZone;
+	private String weatherZone;
 	private String localTime;
 	private double utcOffsetHours;
 	private double latitude;
@@ -58,8 +58,6 @@ public class Airport implements Serializable{
 
 
 	public void setFs(String fs) {
-            
-            System.out.println(fs);
 		this.fs = fs;
 	}
 
@@ -97,7 +95,7 @@ public class Airport implements Serializable{
 
 
 
-/*
+
 
 	public String getFaa() {
 		return faa;
@@ -112,7 +110,7 @@ public class Airport implements Serializable{
 	}
 
 
-*/
+
 
 
 	public String getName() {
@@ -130,7 +128,7 @@ public class Airport implements Serializable{
 
 
 
-/*
+
 	public String getStreet1() {
 		return street1;
 	}
@@ -159,7 +157,7 @@ public class Airport implements Serializable{
 		this.street2 = street2;
 	}
 
-*/
+
 
 
 
@@ -193,7 +191,7 @@ public class Airport implements Serializable{
 
 
 
-/*
+
 
 	public String getDistrict() {
 		return district;
@@ -240,7 +238,7 @@ public class Airport implements Serializable{
 	}
 
 
-*/
+
 
 
 	public String getCountryCode() {
@@ -306,20 +304,20 @@ public class Airport implements Serializable{
 
 
 
-/*
+
 	public String getWeatherZone() {
 		return weatherZone;
 	}
 
-*/
 
-/*
+
+
 
 	public void setWeatherZone(String weatherZone) {
 		this.weatherZone = weatherZone;
 	}
 
-*/
+
 
 
 
@@ -472,12 +470,9 @@ public class Airport implements Serializable{
 	}
 
 
-	@Override
-	public String toString() {
-		return "Airport [fs=" + this.fs +"]";
-	}
 
-/*
+
+
 	@Override
 	public String toString() {
 		return "Airport [fs=" + fs + ", iata=" + iata + ", icao=" + icao + ", faa=" + faa + ", name=" + name
@@ -489,5 +484,5 @@ public class Airport implements Serializable{
 				+ longitude + ", elevationFeet=" + elevationFeet + ", classification=" + classification + ", active="
 				+ active + ", delayIndexUrl=" + delayIndexUrl + ", weatherUrl=" + weatherUrl + "]";
 	}
-	*/
+	
 }
