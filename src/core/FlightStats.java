@@ -93,17 +93,20 @@ public class FlightStats {
 		FlightStats fs = new FlightStats();
 		try {
                         FSAirports airports = new FSAirports();
-
+                        airports.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
                         airports.setDebug(true);
                         
+                        System.out.println(airports.getAllAirports());
+                        System.out.println(airports.getJson());
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
+                        
                         Airport airport=airports.getAirportByFS("GDL");
                         
                         System.out.println("Airport --> " + airport);
                         
-                        
+                        /*
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
@@ -113,7 +116,7 @@ public class FlightStats {
 			System.out.println("CANCUN ---> " + airports.getAirportsByCityCode("CUN").toString());
 			System.out.println("Aeropuertos en MX -->" + airports.getAirportsByCountryCode("MX"));
 			System.out.println("Aeropuertos por Region ---> " + airports.getAirportsByRegion("North America"));
-			
+			*/
                       
                         
                         /*
@@ -129,7 +132,7 @@ public class FlightStats {
 			System.out.println("Airlines by Name (LIKE) -->" + airlines.getAirlinesNameLike("Canada").toString());
 			
 	*/
-                        
+                        /*
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");
@@ -139,7 +142,7 @@ public class FlightStats {
 			fids.setTimeWindowEnd("10");
 			fids.setMaxFlights("10");
 			System.out.println("FIDS -->>>" + fids.getFlightStatusArrivals().toString());
-			
+			*/
 	
 			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
 			/*
@@ -154,7 +157,7 @@ public class FlightStats {
 			FlightStatusTrack fst = fs.getFlightStatusArrivals(fstrackParams);
 			System.err.println(fst.toString());
 			*/
-			
+			/*
                         System.out.println("----------------");
                         System.out.println("----------------");
                         System.out.println("----------------");
@@ -168,18 +171,12 @@ public class FlightStats {
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         fsScheduleParams.setDate(format.parse(elDiaString));
                         
-                        /*
-			fsScheduleParams.setYear(2017);
-			fsScheduleParams.setMonth(9);
-			fsScheduleParams.setDay(11);
-                        */
-                        
 			//fsScheduleParams.setArrivingAt("CUN");
 			fsScheduleParams.setDepartingAt("CUN");
-			
+			*/
                         
                         
-                        
+                        /*
                         FSSqueduledFlights fss = new FSSqueduledFlights();
                         fss.setDebug(true);
                         fss.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
@@ -188,7 +185,7 @@ public class FlightStats {
                         
 			exampleSquedule = fss.getDepartingSchedule(fsScheduleParams);
 			System.out.println(exampleSquedule.getScheduledFlights().toString());			
-			
+			*/
 			/*
 			
 			FIDSParams params = new FIDSParams();

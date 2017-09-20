@@ -93,6 +93,12 @@ public class Net {
 			System.out.println(e);
 		}
                 
+                if(debug==true){
+                    System.out.println("responseBody " );
+                    System.out.println(responseBody);
+                }
+                
+                
                 
                 
 		return responseBody;

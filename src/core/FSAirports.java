@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import core.network.Net;
 import pojo.Airport;
 import pojo.arrays.Airports;
 
-import core.MethodVersion;
 
 public class FSAirports {
 	private Airports airports;
 	private boolean filledAirports=false;
-	private Gson gson=new Gson();
+	private Gson gson= new GsonBuilder().create();
 	private boolean debug=false;
         
         private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
@@ -25,7 +25,7 @@ public class FSAirports {
 
 	}
 
-	private Airports getAllAirports() {
+	public Airports getAllAirports() {
 		// TODO Auto-generated method stub
                 
 		try {
@@ -59,13 +59,14 @@ public class FSAirports {
                     String uri = endpoint.append(Credentials.getAuthentication()).toString();
                     String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
                     airport = gson.fromJson(response,Airport.class);
+                    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
                 
                 return airport;
 	}
-	
+	/*
 	
 	public ArrayList<Airport> getAirportsByCountryCode(String country_code){
             
@@ -131,7 +132,7 @@ public class FSAirports {
 		}
 		return array;
 	}
-	
+	*/
 	public int size() {
 		return airports.getAirports().size();
 	}
