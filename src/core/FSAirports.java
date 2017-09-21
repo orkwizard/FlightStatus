@@ -66,7 +66,7 @@ public class FSAirports {
                 
                 return airport;
 	}
-	/*
+	
 	
 	public ArrayList<Airport> getAirportsByCountryCode(String country_code){
             
@@ -132,7 +132,7 @@ public class FSAirports {
 		}
 		return array;
 	}
-	*/
+	
 	public int size() {
 		return airports.getAirports().size();
 	}
