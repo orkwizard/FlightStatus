@@ -96,7 +96,7 @@ public class FlightStats {
                         airports.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
                         airports.setDebug(true);
                         
-                        System.out.println(airports.getAllAirports());
+                        //System.out.println(airports.getAllAirports());
                        // System.out.println(airports.getJson());
 			System.out.println(" --------------- ");
 			System.out.println(" --------------- ");

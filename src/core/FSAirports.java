@@ -14,7 +14,7 @@ import pojo.arrays.Airports;
 public class FSAirports {
 	private Airports airports;
 	private boolean filledAirports=false;
-	private Gson gson= new GsonBuilder().create();
+	private Gson gson= new Gson();
 	private boolean debug=false;
         
         private String methodVersion=MethodVersion.METHOD_VERSION_NEW;
@@ -58,6 +58,10 @@ public class FSAirports {
                     StringBuilder endpoint = new StringBuilder("https://api.flightstats.com/flex/airports/rest/v1/json/fs/"+fs);
                     String uri = endpoint.append(Credentials.getAuthentication()).toString();
                     String response = Net.get(uri,this.isDebug(),this.getMethodVersion());
+                    
+                    response=response.replace("{\"airport\":{","{");
+                    response=response.substring(0, response.length() - 1);
+                    
                     airport = gson.fromJson(response,Airport.class);
                     
 		} catch (Exception e) {
