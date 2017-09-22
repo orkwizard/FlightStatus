@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>FligthStats</groupId>
   <artifactId>FligthStats</artifactId>
-  <version>0.9.8.3</version>
+  <version>0.9.9</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -14,6 +14,38 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      
+      
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<finalName>uber-${artifactId}-${version}</finalName>
+				</configuration>
+			</plugin>
+
+                        <plugin>
+                          <groupId>org.codehaus.mojo</groupId>
+                          <artifactId>appassembler-maven-plugin</artifactId>
+                          <version>1.10</version>
+                          <configuration>
+                            <programs>
+                              <program>
+                                <mainClass>core.FlightStats</mainClass>
+                                <id>Flight</id>
+                              </program>
+                            </programs>
+                          </configuration>
+                        </plugin>
+      
     </plugins>
   </build>
   <dependencies>

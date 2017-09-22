@@ -92,6 +92,36 @@ public class FlightStats {
 		
 		FlightStats fs = new FlightStats();
 		try {
+                    
+                    
+		
+                        System.out.println("----------------");
+                        System.out.println("----------------");
+                        System.out.println("----------------");
+                        
+			FSScheduleParams fsScheduleParams = new FSScheduleParams();
+			fsScheduleParams.setCarrier("AM");
+                        fsScheduleParams.setFlightnumber("100");
+
+                        String elDiaString = "2017-09-21";
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        fsScheduleParams.setDate(format.parse(elDiaString));
+                        
+			//fsScheduleParams.setArrivingAt("CUN");
+			//fsScheduleParams.setDepartingAt("CUN");
+                        
+                        FSSqueduledFlights fss = new FSSqueduledFlights();
+                        fss.setDebug(true);
+                        fss.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
+			
+                        
+			ExampleSquedule exampleSquedule = fss.getDepartingSchedule(fsScheduleParams);
+			System.out.println(exampleSquedule.getScheduledFlights().toString());	
+                        
+                        exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
+			//System.out.println(exampleSquedule.getScheduledFlights().toString());	
+                    
+                    
                         FSAirports airports = new FSAirports();
                         airports.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
                         airports.setDebug(true);
@@ -105,6 +135,7 @@ public class FlightStats {
                         Airport airport=airports.getAirportByFS("GDL");
                         
                         System.out.println("Airport --> " + airport);
+                        System.out.println("Airport Name --> " + airport.getName());
                         
                         /*
 			System.out.println(" --------------- ");
@@ -145,7 +176,10 @@ public class FlightStats {
 			*/
 	
 			//FlightStatusTrack fst = fs.getFlightStatusArrivals("CUN",2017, 9,6, 11,false,1,"","",5,"");
-			/*
+			
+                        
+                        
+                        /*
 			FSTrackParams fstrackParams = new FSTrackParams();
 			fstrackParams.setAirport("CUN");
 			fstrackParams.setYear(2017);
@@ -156,36 +190,10 @@ public class FlightStats {
 			fstrackParams.addParam("maxFlights","10");
 			FlightStatusTrack fst = fs.getFlightStatusArrivals(fstrackParams);
 			System.err.println(fst.toString());
-			*/
-			/*
-                        System.out.println("----------------");
-                        System.out.println("----------------");
-                        System.out.println("----------------");
-                        
-			FSScheduleParams fsScheduleParams = new FSScheduleParams();
-			fsScheduleParams.setCarrier("AM");
-                        fsScheduleParams.setFlightnumber("448");
-
-
-                        String elDiaString = "2017-09-15";
-                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                        fsScheduleParams.setDate(format.parse(elDiaString));
-                        
-			//fsScheduleParams.setArrivingAt("CUN");
-			fsScheduleParams.setDepartingAt("CUN");
-			*/
+                        */
                         
                         
-                        /*
-                        FSSqueduledFlights fss = new FSSqueduledFlights();
-                        fss.setDebug(true);
-                        fss.setMethodVersion(MethodVersion.METHOD_VERSION_OLD);
-			ExampleSquedule exampleSquedule = fss.getArrivingSchedule(fsScheduleParams);
-			System.out.println(exampleSquedule.getScheduledFlights().toString());	
-                        
-			exampleSquedule = fss.getDepartingSchedule(fsScheduleParams);
-			System.out.println(exampleSquedule.getScheduledFlights().toString());			
-			*/
+                      
 			/*
 			
 			FIDSParams params = new FIDSParams();
